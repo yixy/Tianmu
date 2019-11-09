@@ -34,12 +34,12 @@ func ExampleTripleECBDesEncrypt() {
 	//3des加密
 	crypted, err := TripleECBDesEncrypt(origData, key)
 	if err != nil {
-		fmt.Println("TripleECBDesEncrypt error: %s", err.Error())
+		_ = fmt.Sprintf("TripleECBDesEncrypt error: %s", err.Error())
 	}
 	//3des解密
 	result, err := TripleECBDesDecrypt(crypted, key)
 	if err != nil {
-		fmt.Println("TripleECBDesDecrypt error: %s", err.Error())
+		_ = fmt.Sprintf("TripleECBDesDecrypt error: %s", err.Error())
 	}
 	fmt.Println(string(result))
 }

@@ -42,23 +42,23 @@ func ExampleRsaSign() {
 	var pubKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1qoxunaVSI1dCU5a+asrQFFzNfdYpU1k9xXfnVP+MMjDoenbsjxWeYC21J3Q6+7IwFRiEiz6eMTCw2lNYz3sfvTHtx5xth9V/aaXSqCMmdzBJTty3VlURgS8Ul9o8437i8i/wDylkzNi8Pc4ruVq0MD+zaOcRqTk97EO7NbJchEAmmXhtoM1D7IPlUwQOrk87lbkAxUtBUi6x/bRlImq7R4+1KHF6TOB9kCiY+MDF01/Z4UdOGEgusqzbOAlD2xx7YOVvkx9KiqycZva5sMSeNlPK6eVJmZvj5tABogyJ2Zifz+Et24MnR3dYK5MEdNcDqtSOwy0xkBtGJAsOQIidQIDAQAB"
 	priKeybyte, err := base64.StdEncoding.DecodeString(priKey)
 	if err != nil {
-		fmt.Println("priKey base64 decode error: %s", err.Error())
+		_ = fmt.Sprintf("priKey base64 decode error: %s", err.Error())
 	}
 	pubKeybyte, err := base64.StdEncoding.DecodeString(pubKey)
 	if err != nil {
-		fmt.Println("pubkey base64 decode error: %s", err.Error())
+		_ = fmt.Sprintf("pubkey base64 decode error: %s", err.Error())
 	}
 	//原文
 	originData := []byte("Hello,RSA.")
 	//使用私钥签名
 	sign, err := RsaSign(originData, priKeybyte, SHA256)
 	if err != nil {
-		fmt.Println("RSA sign by SHA256 error: %s", err.Error())
+		_ = fmt.Sprintf("RSA sign by SHA256 error: %s", err.Error())
 	}
 	//使用公钥验签
 	isOk, err := RsaVerify(originData, pubKeybyte, sign, SHA256)
 	if err != nil {
-		fmt.Println("RSA verify by SHA256 error: %s", err.Error())
+		_ = fmt.Sprintf("RSA verify by SHA256 error: %s", err.Error())
 	}
 	if !isOk {
 		fmt.Println("RSA verify by SHA256 not pass")

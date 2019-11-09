@@ -34,12 +34,12 @@ func ExampleAesNewCBCEncrypter() {
 	//加密
 	encrypted, err := AesNewCBCEncrypter(originData, key)
 	if err != nil {
-		fmt.Println("AES encrypt error:%s", err.Error())
+		_ = fmt.Sprintf("AES encrypt error:%s", err.Error())
 	}
 	//解密
 	result, err := AesNewCBCDecrypter(encrypted, key)
 	if err != nil {
-		fmt.Println("AES decrypt error%s", err.Error())
+		_ = fmt.Sprintf("AES decrypt error%s", err.Error())
 	}
 	fmt.Println(string(result))
 }
